@@ -27,7 +27,12 @@ runs:
 
     - name: Run Container
       run: |
-        docker run --rm -v $(pwd):/workspace maker2413/weblorg build
+        docker run --rm \
+        -v $(pwd):/workspace \
+        -e PRE_BUILD_SCRIPT=$PRE_BUILD_SCRIPT \
+        -e POST_BUILD_SCRIPT=$POST_BUILD_SCRIPT \
+        -e WEBLORG_DEFN=$WEBLOR_DEFN \
+        maker2413/weblorg build
       env:
         PRE_BUILD_SCRIPT: ${{ inputs.pre_build_script }}
         POST_BUILD_SCRIPT: ${{ inputs.post_build_script }}
