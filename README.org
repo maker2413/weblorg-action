@@ -27,7 +27,7 @@ a emacs 29 docker image with weblorg installed.
 
       steps:
         - name: Checkout
-          uses: actions/checkout@v2
+          uses: actions/checkout@v4
 
         - name: Publish Org Files
           uses: maker2413/weblorg-action@v1.0.0
