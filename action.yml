@@ -3,7 +3,7 @@ description: "Publish Org files to Blog using Weblorg"
 author: "Maker2413 <maker2413@gmail.com>"
 branding:
   icon: "file-plus"
-  color: "pink"
+  color: "orange"
 inputs:
   pre_build_script:
     default: "pre.sh"
