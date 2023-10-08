@@ -1,0 +1,40 @@
+name: "Weblorg Publish"
+description: "Publish Org files to Blog using Weblorg"
+author: "Maker2413 <maker2413@gmail.com>"
+branding:
+  icon: "file-plus"
+  color: "pink"
+inputs:
+  pre_build_script:
+    default: "pre.sh"
+    required: false
+    description: "Pre-build script that will be run if it exists (e.g. sass compilation)."
+  post_build_script:
+    default: "post.sh"
+    required: false
+    description: "Post-build script that will be run if it exists (e.g. additional asset processing)."
+  weblorg_defn:
+    default: "publish.el"
+    required: false
+    description: "Emacs lisp script to run that contains the weblorg site definition."
+  weblorg_output_path:
+    default: "output"
+    required: false
+    description: "The directory configured in the weblorg site definition where the static site will be built to."
+runs:
+  using: "composite"
+  steps:
+    - name: Pull Image
+      run: |
+        docker pull maker2413/weblorg
+      shell: bash
+
+    - name: Run Container
+      run: |
+        docker run --rm -v $(pwd):/workspace maker2413/weblorg build
+      env:
+        PRE_BUILD_SCRIPT: ${{ inputs.pre_build_script }}
+        POST_BUILD_SCRIPT: ${{ inputs.post_build_script }}
+        WEBLORG_DEFN: ${{ inputs.weblorg_defn }}
+        WEBLORG_OUTPUT_PATH: ${{ inputs.weblorg_output_path }}
+      shell: bash

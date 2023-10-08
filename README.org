@@ -1,0 +1,35 @@
+#+TITLE: Weblorg Action
+
+This repo provides a GitHub action to allow you to publish org-mode files to
+html files for a blog using the [[https://github.com/emacs-love/weblorg][weblorg]] emacs package. I use this action to
+publish my org-mode files to my blog: [[https://blog.ethancpost.com]].
+
+This action uses the [[https://github.com/maker2413/weblorg-docker][weblorg]] image I maintain a fork of. This image is just
+a emacs 29 docker image with weblorg installed.
+
+* Action Parameters
+  This action has the following inputs that can be configured:
+  - pre_build_script :: used to specify a custom elisp script to be run before website build.
+  - post_build_script :: used to specify a custom elisp script to be run after website build.
+  - weblorg_defn :: used to specify a custom elisp script to build the website.
+  - weblorg_output_path :: used to specify the directory the generated website will be output to.
+
+* Usage
+  #+begin_src yaml
+    name: Publish
+    on:
+      push:
+        branches:
+          - master
+
+    jobs:
+      deploy:
+        runs-on: ubuntu-latest
+
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v2
+
+        - name: Publish Org Files
+          uses: maker2413/weblorg-action@v1.0.0
+  #+end_src
