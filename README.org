@@ -12,7 +12,6 @@ a emacs 29 docker image with weblorg installed.
   - pre_build_script :: used to specify a custom elisp script to be run before website build.
   - post_build_script :: used to specify a custom elisp script to be run after website build.
   - weblorg_defn :: used to specify a custom elisp script to build the website.
-  - weblorg_output_path :: used to specify the directory the generated website will be output to.
 
 * Usage
   #+begin_src yaml

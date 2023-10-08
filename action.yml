@@ -17,10 +17,6 @@ inputs:
     default: "publish.el"
     required: false
     description: "Emacs lisp script to run that contains the weblorg site definition."
-  weblorg_output_path:
-    default: "output"
-    required: false
-    description: "The directory configured in the weblorg site definition where the static site will be built to."
 runs:
   using: "composite"
   steps:
@@ -36,5 +32,4 @@ runs:
         PRE_BUILD_SCRIPT: ${{ inputs.pre_build_script }}
         POST_BUILD_SCRIPT: ${{ inputs.post_build_script }}
         WEBLORG_DEFN: ${{ inputs.weblorg_defn }}
-        WEBLORG_OUTPUT_PATH: ${{ inputs.weblorg_output_path }}
       shell: bash
