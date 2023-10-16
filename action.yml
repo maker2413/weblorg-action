@@ -31,7 +31,7 @@ runs:
         -v $(pwd):/workspace \
         -e PRE_BUILD_SCRIPT=$PRE_BUILD_SCRIPT \
         -e POST_BUILD_SCRIPT=$POST_BUILD_SCRIPT \
-        -e WEBLORG_DEFN=$WEBLOR_DEFN \
+        -e WEBLORG_DEFN=$WEBLORG_DEFN \
         maker2413/weblorg build
       env:
         PRE_BUILD_SCRIPT: ${{ inputs.pre_build_script }}
